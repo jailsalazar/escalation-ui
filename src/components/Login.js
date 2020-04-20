@@ -43,13 +43,26 @@ class Login extends Component {
   constructor (props) {
     super (props);
 
+    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.state = {
-      //   sent: false,
+      email: "",
+      password: ""
     };
   }
 
-  handleSubmit () {
-    // setSent (true);
+  handleSubmit() {
+    let {email, password} = this.state;
+    console.log(email);
+    console.log(password);
+  }
+
+  handleChange(event) {
+    let {id, value} = event.target;
+
+    this.setState({
+      [id]: value
+    });
   }
 
   render () {
@@ -66,17 +79,28 @@ class Login extends Component {
 
               <form className={classes.form}>
                 <div className={classes.field}>
-                  <TextField fullWidth label="Email" color="secondary" variant="filled" />
+                  <TextField fullWidth 
+                    label="Email" color="secondary" 
+                    variant="filled" 
+                    id="email"
+                    onChange={event => this.handleChange(event)}
+                  />
                 </div>
 
                 <div className={classes.field}>
-                  <TextField fullWidth label="Password" color="secondary" variant="filled" />
+                  <TextField fullWidth 
+                    label="Password" color="secondary" 
+                    variant="filled" 
+                    id="password"
+                    onChange={event => this.handleChange(event)}
+                  />
                 </div>
 
                 <div className={classes.field}>
                   <Button
                     size="large"
                     variant="contained"
+                    onClick={this.handleSubmit}
                   >
                     Submit
                   </Button>                   
