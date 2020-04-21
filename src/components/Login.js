@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router-dom';
 
 const useStyles = theme => ({
   root: {
@@ -53,8 +54,10 @@ class Login extends Component {
 
   handleSubmit() {
     let {email, password} = this.state;
-    console.log(email);
-    console.log(password);
+    
+    if(email === "admin@gmail.com" && password === "password123") {
+      this.props.history.push("/home");
+    }
   }
 
   handleChange(event) {
@@ -92,6 +95,7 @@ class Login extends Component {
                     label="Password" color="secondary" 
                     variant="filled" 
                     id="password"
+                    type="password"
                     onChange={event => this.handleChange(event)}
                   />
                 </div>
@@ -114,4 +118,4 @@ class Login extends Component {
   }
 }
 
-export default withStyles (useStyles) (Login);
+export default withRouter(withStyles (useStyles) (Login));

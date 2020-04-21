@@ -1,47 +1,41 @@
 import React, {Component} from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import {Link} from "react-router-dom";
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const useStyles = theme => ({
   root: {
-    flexGrow: 1,
+    display: 'flex',
   },
-  appBar: {
-    backgroundColor: theme.palette.error.light,
-    boxShadow: 'none'
+  form: {
+    marginTop: theme.spacing (6),
   },
-  toolbar: {
-    justifyContent: 'space-between',
+  button: {
+    marginTop: theme.spacing (3),
+    marginBottom: theme.spacing (2),
   },
-  menuButton: {
-    marginRight: theme.spacing (2),
+  feedback: {
+    marginTop: theme.spacing (2),
+  },
+  paper: {
+    backgroundColor: 'rgba(229, 113, 113, 0.27)',
+    padding: theme.spacing (4, 3),
+    [theme.breakpoints.up ('md')]: {
+      padding: theme.spacing (8, 6),
+    },
+    marginTop: '20%',
   },
   title: {
     fontSize: 21,
-    color: '#FFFFFF',
-  },
-  left: {
-    flex: 1,
-  },
-  right: {
-    flex: 1,
-    display: 'flex',
-    justifyContent: 'flex-end',
-    fontWeight: '700'
-  },
-  leftLinkActive: {
-    color: '#FFFFFF',
-  },
-  rightLink: {
-    fontSize: 16,
-    color: '#FFFFFF',
-    marginLeft: theme.spacing (3),
-    textDecoration: 'none'
-  },
-  linkSecondary: {
     color: '#494949',
+    fontWeight: 700,
+  },
+  field: {
+    padding: theme.spacing (2),
   },
 });
 
@@ -49,59 +43,23 @@ class Home extends Component {
   constructor (props) {
     super (props);
 
-    this.handleChange = this.handleChange.bind (this);
-    this.handleMenu = this.handleMenu.bind (this);
-    this.handleClose = this.handleClose.bind (this);
-
-    this.state = {
-      anchorEl: null,
-      auth: true,
-    };
-  }
-
-  handleChange (event) {
-    this.setState ({auth: event.target.checked});
-  }
-
-  handleMenu (event) {
-    this.setState ({anchorEl: event.currentTarget});
-  }
-
-  handleClose () {
-    this.setState ({anchorEl: null});
+    this.state = {};
   }
 
   render () {
-    let {anchorEl, auth} = this.state;
     let {classes} = this.props;
 
-    const open = Boolean (anchorEl);
-
     return (
-      <div>
-        <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar className={classes.toolbar}>
-            <div className={classes.left} />
-
-            <div className={classes.right}>
-              <Link
-                color="inherit"
-                underline="none"
-                className={classes.rightLink}
-                to={"/login"}
-              >
-                {'Log In'}
-              </Link>
-              <Link
-                underline="none"
-                className={[classes.rightLink, classes.linkSecondary].join(' ')}
-                to={"/create"}
-              >
-                {'Create Account'}
-              </Link>
-            </div>
-          </Toolbar>
-        </AppBar>
+      <div className={classes.root}>
+        <Container maxWidth="sm">
+          <Box mt={7} mb={12}>
+            <Paper className={classes.paper} elevation={0} square>
+              <Typography variant="h3" align="center" className={classes.title}>
+                Successful Login
+              </Typography>
+            </Paper>
+          </Box>
+        </Container>
       </div>
     );
   }

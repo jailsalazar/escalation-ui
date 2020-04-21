@@ -44,12 +44,21 @@ class Create extends Component {
     super (props);
 
     this.state = {
-      //   sent: false,
+      newEmail: '',
+      newPassword: ''
     };
   }
 
   handleSubmit () {
     // setSent (true);
+  }
+  
+  handleChange(event) {
+    let {id, value} = event.target;
+
+    this.setState({
+      [id]: value
+    });
   }
 
   render () {
@@ -66,11 +75,21 @@ class Create extends Component {
 
               <form className={classes.form}>
                 <div className={classes.field}>
-                  <TextField fullWidth label="Email" color="secondary" variant="filled" />
+                  <TextField fullWidth label="Email" 
+                    id="newEmail"
+                    color="secondary" 
+                    variant="filled"
+                    onChange={event => this.handleChange(event)} 
+                  />
                 </div>
 
                 <div className={classes.field}>
-                  <TextField fullWidth label="Password" color="secondary" variant="filled" />
+                  <TextField fullWidth label="Password" 
+                    id="newPassword"
+                    color="secondary"
+                    variant="filled" 
+                    onChange={event => this.handleChange(event)} 
+                  />
                 </div>
 
                 <div className={classes.field}>
