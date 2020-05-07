@@ -6,7 +6,6 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { withRouter } from 'react-router-dom';
 
 const useStyles = theme => ({
   root: {
@@ -40,30 +39,20 @@ const useStyles = theme => ({
   },
 });
 
-class Login extends Component {
+class SecureCreate extends Component {
   constructor (props) {
     super (props);
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-
     this.state = {
-      email: "",
-      password: ""
+      newEmail: '',
+      newPassword: ''
     };
   }
 
-  handleSubmit() {
-    let {email, password} = this.state;
-
-    let {location} = this.props;
-
-    let site = location.pathname.split ('/')[1];
-    
-    if(email === "admin@gmail.com" && password === "password123") {
-      this.props.history.push("/" + site + "/home");
-    }
+  handleSubmit () {
+    // setSent (true);
   }
-
+  
   handleChange(event) {
     let {id, value} = event.target;
 
@@ -81,26 +70,25 @@ class Login extends Component {
           <Box mt={7} mb={12}>
             <Paper className={classes.paper} elevation={0} square>
               <Typography variant="h3" align="center" className={classes.title}>
-                Log In
+                Create Account
               </Typography>
 
               <form className={classes.form}>
                 <div className={classes.field}>
-                  <TextField fullWidth 
-                    label="Email" color="secondary" 
-                    variant="filled" 
-                    id="email"
-                    onChange={event => this.handleChange(event)}
+                  <TextField fullWidth label="Email" 
+                    id="newEmail"
+                    color="secondary" 
+                    variant="filled"
+                    onChange={event => this.handleChange(event)} 
                   />
                 </div>
 
                 <div className={classes.field}>
-                  <TextField fullWidth 
-                    label="Password" color="secondary" 
+                  <TextField fullWidth label="Password" 
+                    id="newPassword"
+                    color="secondary"
                     variant="filled" 
-                    id="password"
-                    type="password"
-                    onChange={event => this.handleChange(event)}
+                    onChange={event => this.handleChange(event)} 
                   />
                 </div>
 
@@ -108,9 +96,8 @@ class Login extends Component {
                   <Button
                     size="large"
                     variant="contained"
-                    onClick={this.handleSubmit}
                   >
-                    Submit
+                    Create
                   </Button>                   
                 </div>
               </form>
@@ -122,4 +109,4 @@ class Login extends Component {
   }
 }
 
-export default withRouter(withStyles (useStyles) (Login));
+export default withStyles (useStyles) (SecureCreate);

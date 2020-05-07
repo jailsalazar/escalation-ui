@@ -40,7 +40,7 @@ const useStyles = theme => ({
   },
 });
 
-class Login extends Component {
+class SecureLogin extends Component {
   constructor (props) {
     super (props);
 
@@ -54,7 +54,6 @@ class Login extends Component {
 
   handleSubmit() {
     let {email, password} = this.state;
-
     let {location} = this.props;
 
     let site = location.pathname.split ('/')[1];
@@ -122,4 +121,4 @@ class Login extends Component {
   }
 }
 
-export default withRouter(withStyles (useStyles) (Login));
+export default withRouter(withStyles (useStyles) (SecureLogin));

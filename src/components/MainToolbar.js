@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withStyles, getLuminance} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 
@@ -50,28 +51,29 @@ class MainToolbar extends Component {
   constructor (props) {
     super (props);
 
-    this.returnLogin = this.returnLogin.bind (this);
     this.returnLinks = this.returnLinks.bind (this);
   }
 
   returnLinks () {
     let {classes, location} = this.props;
 
-    if(location.pathname === "/home") {
+    let site = location.pathname.split ('/')[1];
+
+    if (location.pathname.includes ('/home')) {
       return (
         <div className={classes.right}>
           <Link
             color="inherit"
             underline="none"
             className={classes.rightLink}
-            to={'/home'}
+            to={'/' + site + '/home'}
           >
             {'Home'}
           </Link>
           <Link
             underline="none"
             className={[classes.rightLink, classes.linkSecondary].join (' ')}
-            to={'/'}
+            to={'/' + site}
           >
             {'Log Out'}
           </Link>
@@ -80,19 +82,18 @@ class MainToolbar extends Component {
     } else {
       return (
         <div className={classes.right}>
-  
           <Link
             color="inherit"
             underline="none"
             className={classes.rightLink}
-            to={'/login'}
+            to={'/' + site + '/login'}
           >
             {'Log In'}
           </Link>
           <Link
             underline="none"
             className={[classes.rightLink, classes.linkSecondary].join (' ')}
-            to={'/create'}
+            to={'/' + site + '/create'}
           >
             {'Create Account'}
           </Link>
@@ -101,41 +102,22 @@ class MainToolbar extends Component {
     }
   }
 
-  returnLogin () {
-    let {classes} = this.props;
-
-    return (
-      <div className={classes.right}>
-
-        <Link
-          color="inherit"
-          underline="none"
-          className={classes.rightLink}
-          to={'/login'}
-        >
-          {'Log In'}
-        </Link>
-        <Link
-          underline="none"
-          className={[classes.rightLink, classes.linkSecondary].join (' ')}
-          to={'/create'}
-        >
-          {'Create Account'}
-        </Link>
-      </div>
-    );
-  }
-
   render () {
-    let {classes} = this.props;
+    let {classes, location} = this.props;
+
+    let site = location.pathname.split ('/')[1];
 
     return (
       <div>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar className={classes.toolbar}>
+            <Typography variant="h6" className={classes.title}>
+              {site}
+            </Typography>
+
             <div className={classes.left} />
 
-            {this.returnLinks()}
+            {location.pathname === '/' ? <div /> : this.returnLinks ()}
           </Toolbar>
         </AppBar>
       </div>
