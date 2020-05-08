@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router-dom';
 
@@ -38,7 +39,15 @@ const useStyles = theme => ({
   field: {
     padding: theme.spacing (2),
   },
+  error: {
+    color: 'red',
+    fontSize: '15px',
+    fontWeight: '700',
+    textAlign: 'center'
+  }
 });
+
+const data = require('../data/login.json');
 
 class Login extends Component {
   constructor (props) {
@@ -48,7 +57,8 @@ class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      helperText: ""
     };
   }
 
@@ -58,10 +68,19 @@ class Login extends Component {
     let {location} = this.props;
 
     let site = location.pathname.split ('/')[1];
-    
-    if(email === "admin@gmail.com" && password === "password123") {
-      this.props.history.push("/" + site + "/home");
-    }
+
+    data.users.map(user => {
+      if(user.email === email) {
+        if(user.password === password) {
+          this.props.history.push("/" + site + "/home");
+        }
+        else {
+          this.setState({helperText: "Incorrect email or password. Try again."});
+        }
+      } else {
+          this.setState({helperText: "Incorrect email or password. Try again."});
+      }
+    });
   }
 
   handleChange(event) {
@@ -103,6 +122,10 @@ class Login extends Component {
                     onChange={event => this.handleChange(event)}
                   />
                 </div>
+
+                <FormHelperText className={classes.error}>
+                  {this.state.helperText}
+                </FormHelperText>
 
                 <div className={classes.field}>
                   <Button

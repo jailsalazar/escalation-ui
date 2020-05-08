@@ -55,33 +55,48 @@ class MainToolbar extends Component {
   }
 
   returnLinks () {
-    let {classes, location} = this.props;
+    let {classes, location, auth} = this.props;
 
     let site = location.pathname.split ('/')[1];
 
     if (location.pathname.includes ('/home')) {
-      return (
-        <div className={classes.right}>
-          <Link
-            color="inherit"
-            underline="none"
-            className={classes.rightLink}
-            to={'/' + site + '/home'}
-          >
-            {'Home'}
-          </Link>
-          <Link
-            underline="none"
-            className={[classes.rightLink, classes.linkSecondary].join (' ')}
-            to={'/' + site}
-          >
-            {'Log Out'}
-          </Link>
-        </div>
-      );
+      if (location.pathname.includes ('secure') && !auth) {
+        return (
+          <div>
+            <Link
+              underline="none"
+              className={classes.rightLink}
+              to={'/' + site}
+            >
+              {'Log In'}
+            </Link>
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <Link
+              color="inherit"
+              underline="none"
+              className={classes.rightLink}
+              to={'/' + site + '/home'}
+            >
+              {'Home'}
+            </Link>
+            <Link
+              underline="none"
+              className={[classes.rightLink, classes.linkSecondary].join (' ')}
+              to={'/' + site}
+              onClick={() => this.props.setAuth (false)}
+            >
+              {'Log Out'}
+            </Link>
+          </div>
+        );
+      }
     } else {
       return (
-        <div className={classes.right}>
+        <div>
           <Link
             color="inherit"
             underline="none"
@@ -117,7 +132,12 @@ class MainToolbar extends Component {
 
             <div className={classes.left} />
 
-            {location.pathname === '/' ? <div /> : this.returnLinks ()}
+            <div className={classes.right}>
+              <Link underline="none" className={[classes.rightLink, classes.linkSecondary].join (' ')} to={'/'} onClick={() => this.props.setAuth (false)}>
+                {'Select New Site'}
+              </Link>
+              {location.pathname === '/' ? <div /> : this.returnLinks ()}
+            </div>
           </Toolbar>
         </AppBar>
       </div>

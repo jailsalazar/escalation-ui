@@ -11,11 +11,24 @@ import SecureCreate from './components/SecureCreate';
 import SecureLogin from './components/SecureLogin';
 
 class App extends Component {
+  constructor (props) {
+    super (props);
+
+    this.state = {
+      auth: false
+    };
+
+  }
+
+  setAuth(value) {
+    this.setState({auth: value});
+  }
+
   render () {
     return (
       <Router>
         <div className="App">
-          <MainToolbar />
+          <MainToolbar setAuth={(e) => this.setAuth(e)} />
 
           <Switch>
           <Route path="/vulnerable/login">
@@ -31,16 +44,16 @@ class App extends Component {
               <Login />
             </Route>
             <Route path="/secure/login">
-              <SecureLogin />
+              <SecureLogin setAuth={(e) => this.setAuth(e)}/>
             </Route>
             <Route path="/secure/create">
               <SecureCreate />
             </Route>
             <Route path="/secure/home">
-              <Home />
+              <Home auth={this.state.auth}/>
             </Route>
             <Route path="/secure">
-              <Login />
+              <SecureLogin setAuth={(e) => this.setAuth(e)}/>
             </Route>
             <Route path="/">
               <SiteSelection />
