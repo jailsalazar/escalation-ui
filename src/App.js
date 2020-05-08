@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <MainToolbar setAuth={(e) => this.setAuth(e)} />
+          <MainToolbar setAuth={(e) => this.setAuth(e)} auth={this.state.auth} />
 
           <Switch>
           <Route path="/vulnerable/login">
