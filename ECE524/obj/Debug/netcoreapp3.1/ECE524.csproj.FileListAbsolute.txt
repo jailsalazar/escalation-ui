@@ -1,0 +1,13 @@
+C:\Users\julym\Documents\Visual Studio Code\ECE524\bin\Debug\netcoreapp3.1\ECE524.exe
+C:\Users\julym\Documents\Visual Studio Code\ECE524\bin\Debug\netcoreapp3.1\ECE524.deps.json
+C:\Users\julym\Documents\Visual Studio Code\ECE524\bin\Debug\netcoreapp3.1\ECE524.runtimeconfig.json
+C:\Users\julym\Documents\Visual Studio Code\ECE524\bin\Debug\netcoreapp3.1\ECE524.runtimeconfig.dev.json
+C:\Users\julym\Documents\Visual Studio Code\ECE524\bin\Debug\netcoreapp3.1\ECE524.dll
+C:\Users\julym\Documents\Visual Studio Code\ECE524\bin\Debug\netcoreapp3.1\ECE524.pdb
+C:\Users\julym\Documents\Visual Studio Code\ECE524\obj\Debug\netcoreapp3.1\ECE524.csprojAssemblyReference.cache
+C:\Users\julym\Documents\Visual Studio Code\ECE524\obj\Debug\netcoreapp3.1\ECE524.csproj.CoreCompileInputs.cache
+C:\Users\julym\Documents\Visual Studio Code\ECE524\obj\Debug\netcoreapp3.1\ECE524.AssemblyInfoInputs.cache
+C:\Users\julym\Documents\Visual Studio Code\ECE524\obj\Debug\netcoreapp3.1\ECE524.AssemblyInfo.cs
+C:\Users\julym\Documents\Visual Studio Code\ECE524\obj\Debug\netcoreapp3.1\ECE524.dll
+C:\Users\julym\Documents\Visual Studio Code\ECE524\obj\Debug\netcoreapp3.1\ECE524.pdb
+C:\Users\julym\Documents\Visual Studio Code\ECE524\obj\Debug\netcoreapp3.1\ECE524.genruntimeconfig.cache
