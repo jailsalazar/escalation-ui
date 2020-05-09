@@ -8,4 +8,4 @@ ECE524 Project Privilage escalation project. To access deployed application, cli
 
 ## Credentials for successful login
 * Email: admin@gmail.com, Password: password123
-* Email: test@gmail.com, Passwrord: password
+* Email: test@gmail.com, Password: password
